@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: public
+    database: postgres       # or omit if you're in the same DB
+    schema: public
+    tables:
+      - name: insurance_data

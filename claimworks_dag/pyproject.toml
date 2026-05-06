@@ -1,0 +1,8 @@
+[project]
+name = "claimworks_dag"
+version = "0.1.0"
+description = "Dagster orchestration for ClaimWorks PySpark pipeline"
+authors = [{ name = "Sree Madhuchandra Gamidi", email = "madhugamidi1496@gmail.com" }]
+
+[tool.dagster]
+module_name = "claimworks_dag"

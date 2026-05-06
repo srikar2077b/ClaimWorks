@@ -1,0 +1,66 @@
+# --------------------
+# Python-related
+# --------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+*.egg
+*.log
+
+# --------------------
+# Virtual Environments
+# --------------------
+.venv/
+env/
+venv/
+ENV/
+
+# -----------------
+# Input/Outputs
+# -----------------
+
+input/
+output/
+data/
+logs/
+*.json
+*.parquet
+*.csv
+*.db
+
+# --------------------
+# Jupyter Notebooks Checkpoints
+# --------------------
+.ipynb_checkpoints/
+
+# --------------------
+# VSCode & IDE files
+# --------------------
+.vscode/
+.idea/
+*.swp
+
+# --------------------
+# Dagster / Papermill generated
+# --------------------
+notebooks/*/temp_*.ipynb
+notebooks/*/*_output_*.ipynb
+pyspark/insurance.db
+
+# --------------------
+# Configs and Secrets (optional)
+# --------------------
+config/config.yaml
+*.env
+
+# --------------------
+# System files
+# --------------------
+.DS_Store
+Thumbs.db
+
+explore_data.ipynb
+tmp*/

@@ -1,0 +1,159 @@
+version: 2
+
+models:
+  - name: reporting_data
+    description: >
+      Final transformed and enriched insurance dataset for reporting. 
+      Includes customer, policy, claim, risk, payment, and derived KPIs.
+    columns:
+      - name: policy_id
+        description: Unique identifier for each policy
+        tests:
+          - not_null
+          - unique
+
+      - name: customer_id
+        description: Foreign key to the customer entity
+        tests:
+          - not_null
+
+      - name: customer_name
+        description: Lowercased full name of the customer
+
+      - name: gender
+        description: Standardized gender code ('M', 'F', or 'O')
+        tests:
+          - accepted_values:
+              values: ['M', 'F', 'O']
+
+      - name: age
+        description: Age of the customer (calculated if missing)
+
+      - name: age_group
+        description: Binned age range (e.g., 18-24, 25-35)
+        tests:
+          - accepted_values:
+              values: ['18-24', '25-35', '36-45', '46-55', '56+']
+
+      - name: premium_amount
+        description: Periodic premium amount
+
+      - name: annual_premium
+        description: Annualized premium amount based on payment frequency
+
+      - name: payment_frequency
+        description: Payment frequency in lowercase
+        tests:
+          - accepted_values:
+              values: ['monthly', 'quarterly', 'yearly']
+
+      - name: policy_type
+        description: Type of policy (e.g., health, life, auto)
+
+      - name: policy_start_date
+        description: Start date of the policy
+
+      - name: policy_end_date
+        description: End date of the policy
+
+      - name: policy_duration_days
+        description: Total duration of the policy in days
+
+      - name: policy_age_days
+        description: Age of the policy from start to current date
+
+      - name: is_active
+        description: Flag indicating if the policy is still active
+
+      - name: policy_status
+        description: Raw policy status
+
+      - name: claim_id
+        description: Identifier for any claim associated with the policy
+
+      - name: claim_amount
+        description: Amount claimed
+
+      - name: claim_status
+        description: Status of the claim
+
+      - name: claim_date
+        description: Date the claim was filed
+
+      - name: has_approved_claim
+        description: Binary flag for approved claims
+        tests:
+          - accepted_values:
+              values: [0, 1]
+
+      - name: days_since_last_claim
+        description: Number of days since the most recent claim
+
+      - name: risk_category
+        description: Lowercased risk category of the customer
+        tests:
+          - accepted_values:
+              values: ['low', 'medium', 'high']
+
+      - name: smoker_flag
+        description: Boolean flag if the customer is a smoker
+
+      - name: health_condition
+        description: Health condition as reported
+
+      - name: vehicle_type
+        description: Type of vehicle insured
+
+      - name: vehicle_age
+        description: Age of the vehicle
+
+      - name: vehicle_age_group
+        description: Binned group for vehicle age
+        tests:
+          - accepted_values:
+              values: ['New', 'Mid', 'Old']
+
+      - name: property_type
+        description: Type of property insured
+
+      - name: property_value
+        description: Estimated value of the insured property
+
+      - name: is_high_value_property
+        description: Flag for high-value property (>$500,000)
+
+      - name: marital_status
+        description: Marital status of the customer
+
+      - name: number_of_dependents
+        description: Count of dependents
+
+      - name: renewal_flag
+        description: Boolean indicating if policy is set for renewal
+
+      - name: last_payment_date
+        description: Date of last premium payment
+
+      - name: next_due_date
+        description: Next premium payment due date
+
+      - name: days_since_last_payment
+        description: Number of days since last payment
+
+      - name: days_to_next_payment
+        description: Number of days until next payment is due
+
+      - name: is_payment_due
+        description: Boolean flag if payment is overdue
+
+      - name: email_address
+        description: Customer email address
+
+      - name: zip_code
+        description: ZIP or postal code
+
+      - name: full_address
+        description: Full customer address (combined fields)
+
+      - name: region
+        description: Region of residence or coverage

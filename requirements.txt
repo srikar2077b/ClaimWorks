@@ -1,0 +1,7 @@
+pyspark>=3.4.0
+notebook
+ipykernel
+pandas
+pyarrow
+psycopg2-binary
+pyyaml
